@@ -1,0 +1,77 @@
+<!DOCTYPE html> 
+<html>
+<head>
+  <title>Proxy Anywhere</title>
+  <link rel="stylesheet" type="text/css" href="/css/options.css">
+  <script type="text/javascript" src="/js/options.js"></script>
+</head>
+<body onload="restoreOptions()"> 
+  <form onsubmit="return false;">
+  <div id="body-container">
+    <div id="header">
+      <h1>Proxy Anywhere<em id="version"></em></h1>
+    </div>
+    <p>
+      Make sure you save the settings after your done editing!
+      <a
+       href="https://chrome.google.com/webstore/detail/ddkmiidlgnkhnfhigdpadkaamogngkin">
+       Visit extension page
+      </a>,
+      <a
+       href="http://groups.google.com/group/mohamedmansour-extensions">
+       File bugs and suggestions
+      </a>
+    </p>
+    <div class="extension-template">
+      <div class="extension-header">Proxy Server</div>
+      <div class="extension-options">
+        <p>The following section encapsulates a single proxy server's
+           specification. Make sure the server the information is correct.</p>
+        <dl>
+          <dt>Protocol:</dt>
+          <dd>
+            <select id="scheme">
+              <option value="http">http</option>
+              <option value="socks">socks</option>
+              <option value="socks4">socks4</option>
+              <option value="socks5">socks5</option>
+            </select>
+          </dd>
+          <dt>Host:</dt>
+          <dd>
+            <label for="host"><input type="text" id="host" /></label>
+          </dd>
+          <dt>Port:</dt>
+          <dd>
+            <label for="port"><input type="text" id="port" /></label>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div class="extension-template">
+      <div class="extension-header">Misc</div>
+      <div class="extension-options">
+        <p>If you would like to be notified of major upgrades to this extension,
+           please make sure the box below is unchecked. You wont be spammed.</p>
+        <dl>
+          <dt>Opt-Out of future notifications:</dt>
+          <dd>
+            <label for="opt_out"><input type="checkbox" id="opt_out" /></label>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div id="extension-footer">
+      <span id="info-message">Options saved!</span>
+      <button onclick="saveOptions();">Save</button>
+      <button onclick="window.close();">Close</button>
+    </div>
+    <div id="credits">
+      Extension developed by <a href="http://www.mohamedmansour.com">Mohamed Mansour</a>, 
+      Source Code available in <a href="http://github.com/mohamedmansour/proxy-anywhere">GitHub</a><br/>
+      Follow me on Twitter <a href="http://twitter.com/mohamedmansour">@mohamedmansour</a>
+    </div>
+  </div>
+  </form>
+</body>
+</html>
