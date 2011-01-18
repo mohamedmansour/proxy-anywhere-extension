@@ -1,4 +1,10 @@
+// Extensions pages can all have access to the bacground page.
 var bkg = chrome.extension.getBackgroundPage();
+
+// When the DOM is loaded, make sure all the saved info is restored.
+window.addEventListener('load', function() {
+  restoreOptions();
+}, false);
 
 /**
 * Saves options to localStorage.
