@@ -11,7 +11,7 @@ function saveOptions() {
   bkg.settings.opt_out = document.getElementById('opt_out').checked;
   
   // Check if the status of the proxy server is online, if so, refresh it.
-  if (bkg.status) {
+  if (bkg.proxy_status) {
     bkg.setProxyEnabled(true);
   }
   
