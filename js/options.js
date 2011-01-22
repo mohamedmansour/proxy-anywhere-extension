@@ -2,14 +2,28 @@
 var bkg = chrome.extension.getBackgroundPage();
 
 // When the DOM is loaded, make sure all the saved info is restored.
-window.addEventListener('load', function() {
-  restoreOptions();
-}, false);
+window.addEventListener('load', onLoad, false);
 
 /**
-* Saves options to localStorage.
-*/
-function saveOptions() {
+ * When the options window has been loaded.
+ */
+function onLoad() {
+  onRestore();
+  document.getElementById('button-save').addEventListener('click', onSave, false);
+  document.getElementById('button-close').addEventListener('click', onClose, false);
+}
+
+/**
+ *  When the options window is closed;
+ */
+function onClose() {
+  window.close();
+}
+
+/**
+ * Saves options to localStorage.
+ */
+function onSave() {
   // Save settings.
   bkg.settings.scheme = document.getElementById('scheme').value;
   bkg.settings.host = document.getElementById('host').value;
@@ -34,7 +48,7 @@ function saveOptions() {
 /**
 * Restore all options.
 */
-function restoreOptions() {
+function onRestore() {
   // Restore settings.
   document.getElementById('version').innerHTML = ' (v' + bkg.settings.version + ')';
   document.getElementById('opt_out').checked = bkg.settings.opt_out;
