@@ -9,8 +9,8 @@ window.addEventListener('load', onLoad, false);
  */
 function onLoad() {
   onRestore();
-  document.getElementById('button-save').addEventListener('click', onSave, false);
-  document.getElementById('button-close').addEventListener('click', onClose, false);
+  $('button-save').addEventListener('click', onSave, false);
+  $('button-close').addEventListener('click', onClose, false);
 }
 
 /**
@@ -25,11 +25,11 @@ function onClose() {
  */
 function onSave() {
   // Save settings.
-  bkg.settings.scheme = document.getElementById('scheme').value;
-  bkg.settings.host = document.getElementById('host').value;
-  bkg.settings.port = parseInt(document.getElementById('port').value);
-  bkg.settings.opt_out = document.getElementById('opt_out').checked;
-  bkg.settings.autostart = document.getElementById('autostart').checked;
+  bkg.settings.scheme = $('scheme').value;
+  bkg.settings.host = $('host').value;
+  bkg.settings.port = parseInt($('port').value);
+  bkg.settings.opt_out = $('opt_out').checked;
+  bkg.settings.autostart = $('autostart').checked;
   
   // Check if the status of the proxy server is online, if so, refresh it.
   if (bkg.proxy_status) {
@@ -37,7 +37,7 @@ function onSave() {
   }
   
   // Update status to let user know options were saved.
-  var info = document.getElementById('info-message');
+  var info = $('info-message');
   info.style.display = 'inline';
   info.style.opacity = 1;
   setTimeout(function() {
@@ -50,10 +50,10 @@ function onSave() {
 */
 function onRestore() {
   // Restore settings.
-  document.getElementById('version').innerHTML = ' (v' + bkg.settings.version + ')';
-  document.getElementById('opt_out').checked = bkg.settings.opt_out;
-  document.getElementById('host').value = bkg.settings.host;
-  document.getElementById('port').value = bkg.settings.port;
-  document.getElementById('scheme').value = bkg.settings.scheme;
-  document.getElementById('autostart').checked = bkg.settings.autostart;
+  $('version').innerHTML = ' (v' + bkg.settings.version + ')';
+  $('opt_out').checked = bkg.settings.opt_out;
+  $('host').value = bkg.settings.host;
+  $('port').value = bkg.settings.port;
+  $('scheme').value = bkg.settings.scheme;
+  $('autostart').checked = bkg.settings.autostart;
 }
