@@ -33,6 +33,12 @@ chrome.browserAction.onClicked.addListener(function(tab) {
   setProxyEnabled(!proxy_status);
 }); 
 
+// Check if the autostart setting is enabled, if it is, automatically start
+// our custom proxy server.
+if (settings.autostart) {
+  setProxyEnabled(true);
+}
+
 // Synchronously retrieve the current extension version.
 var version = 'NaN';
 var xhr = new XMLHttpRequest();

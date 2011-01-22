@@ -15,6 +15,7 @@ function saveOptions() {
   bkg.settings.host = document.getElementById('host').value;
   bkg.settings.port = parseInt(document.getElementById('port').value);
   bkg.settings.opt_out = document.getElementById('opt_out').checked;
+  bkg.settings.autostart = document.getElementById('autostart').checked;
   
   // Check if the status of the proxy server is online, if so, refresh it.
   if (bkg.proxy_status) {
@@ -40,4 +41,5 @@ function restoreOptions() {
   document.getElementById('host').value = bkg.settings.host;
   document.getElementById('port').value = bkg.settings.port;
   document.getElementById('scheme').value = bkg.settings.scheme;
+  document.getElementById('autostart').checked = bkg.settings.autostart;
 }

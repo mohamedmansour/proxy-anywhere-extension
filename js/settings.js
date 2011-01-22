@@ -33,5 +33,12 @@ settings = {
   },
   set opt_out(val) {
     localStorage['opt_out'] = val;
+  },
+  get autostart() {
+    var key = localStorage['autostart'];
+    return (typeof key == 'undefined') ? false : key === 'true';
+  },
+  set autostart(val) {
+    localStorage['autostart'] = val;
   }
 };
