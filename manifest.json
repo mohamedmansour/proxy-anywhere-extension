@@ -1,6 +1,6 @@
 {
   "name": "Proxy Server Anywhere",
-  "version": "0.1",
+  "version": "0.1.1",
   "description": "Proxy Server Anywhere allows you to instantaneously change to your custom proxy from a click of a button.",
   "permissions": [ "experimental" ],
   "background_page": "background.html",
