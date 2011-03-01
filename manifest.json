@@ -1,6 +1,6 @@
 {
   "name": "Proxy Server Anywhere",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "update_url": "http://mohamedmansour.com/chrome/proxy_anywhere/updates.xml",
   "minimum_chrome_version": "11",
   "description": "Proxy Server Anywhere allows you to instantaneously change to your custom proxy from a click of a button.",
