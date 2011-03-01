@@ -11,7 +11,7 @@ function setProxyEnabled(status_) {
   
   // Setting your proxy configuration. For now, just do simple stuff, no need
   // to go all fancy.
-  chrome.experimental.proxy.useCustomProxySettings({
+  var config = {
     mode: proxy_status ? 'fixed_servers' : 'auto_detect',
     rules: {
       singleProxy: {
@@ -20,7 +20,14 @@ function setProxyEnabled(status_) {
         port: settings.port
       }
     }
-  });
+  };
+  
+  var proxy_settings = {
+    'value': config,
+    'incognito': false
+  };
+  
+  chrome.experimental.proxy.settings.set(proxy_settings, function() {});
   
   // Change the icon to reflect the current status of the proxy server.
   chrome.browserAction.setIcon({
@@ -31,7 +38,12 @@ function setProxyEnabled(status_) {
 // Browser action button on the Chrome toolbar has been clicked. Toggle.
 chrome.browserAction.onClicked.addListener(function(tab) {
   setProxyEnabled(!proxy_status);
-}); 
+});
+
+// Notifies about proxy errors.
+chrome.experimental.proxy.onProxyError.addListener(function(details) {
+  alert((details.fatal ? 'FATAL' : 'ERROR') + ': ' + details.error + '\n\n' + details.details);
+});
 
 // Check if the autostart setting is enabled, if it is, automatically start
 // our custom proxy server.

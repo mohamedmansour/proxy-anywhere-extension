@@ -1,9 +1,9 @@
 {
   "name": "Proxy Server Anywhere",
-  "version": "0.1.1",
-  "minimum_chrome_version": "10",
+  "version": "0.1.2",
+  "minimum_chrome_version": "11",
   "description": "Proxy Server Anywhere allows you to instantaneously change to your custom proxy from a click of a button.",
-  "permissions": [ "experimental" ],
+  "permissions": [ "experimental", "proxy" ],
   "background_page": "background.html",
   "options_page": "options.html",
   "browser_action": {
