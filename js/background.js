@@ -49,7 +49,8 @@ var prevVersion = settings.version;
 // Check if the extension has been just updated or installed.
 if (currVersion != prevVersion) {
   if (typeof prevVersion == 'undefined') {
-    // onInstall: Do nothing now.
+    // onInstall: Show Options page.
+    chrome.tabs.create({url: 'options.html'});
   }
   else {
     // onUpdate: Do nothing now. 
