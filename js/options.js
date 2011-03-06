@@ -46,8 +46,8 @@ function onSave() {
   bkg.settings.bypass = bypassList;
   
   // Check if the status of the proxy server is online, if so, refresh it.
-  if (bkg.proxy_status) {
-    bkg.setProxyEnabled(true);
+  if (bkg.proxyController.isProxyActive()) {
+    bkg.proxyController.setProxyEnabled(true);
   }
   
   // Update status to let user know options were saved.

@@ -18,6 +18,15 @@ ProxyController = function()
 };
 
 /**
+ * To knwo the status when the custom proxy server is active or online.
+ *
+ * @returns {boolean} true is custom proxy is set and active.
+ */
+ProxyController.prototype.isProxyActive = function() {
+  return this.proxyStatus;
+};
+
+/**
  * Browser action button on the Chrome toolbar that has been clicked.
  * Toggle behaviour.
  *
