@@ -40,5 +40,12 @@ settings = {
   },
   set autostart(val) {
     localStorage['autostart'] = val;
+  },
+  get bypass() {
+    var key = localStorage['bypass'];
+    return (typeof key == 'undefined') ? ['<local>'] : JSON.parse(key);
+  },
+  set bypass(val) {
+    localStorage['bypass'] = JSON.stringify(val);
   }
 };

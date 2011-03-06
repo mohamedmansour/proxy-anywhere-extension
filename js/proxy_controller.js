@@ -88,7 +88,8 @@ ProxyController.prototype.setProxyEnabled = function (status_)
         scheme: settings.scheme,
         host: settings.host,
         port: settings.port
-      }
+      },
+      bypassList: settings.bypass
     }
   };
   

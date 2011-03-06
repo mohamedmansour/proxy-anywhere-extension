@@ -2,7 +2,9 @@
 <html>
 <head>
   <title>Proxy Anywhere</title>
+  <link rel="stylesheet" type="text/css" href="/css/common.css" />
   <link rel="stylesheet" type="text/css" href="/css/options.css" />
+  <link rel="stylesheet" type="text/css" href="/css/options-proxy.css" />
   <script type="text/javascript" src="/js/functions.js"></script>
   <script type="text/javascript" src="/js/options.js"></script>
 </head>
@@ -55,6 +57,22 @@
       </div>
     </div>
     <div class="extension-template">
+      <div class="extension-header">Exceptions</div>
+      <div class="extension-options">
+        <p>Individual servers may be excluded from being proxied.</p>
+        <dl>
+          <dt>Bypass list:</dt>
+          <dd>
+            <select id="bypass_list" size="8"></select>
+            <button id="bypass-list-add">Add</button>
+            <button id="bypass-list-remove">Remove</button>
+            <button id="bypass-list-remove-all">Remove All</button>
+            <div class="clear"></div>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div class="extension-template">
       <div class="extension-header">Misc</div>
       <div class="extension-options">
         <p>If you would like to be notified of major upgrades to this extension,
@@ -78,5 +96,26 @@
     </div>
   </div>
   </form>
+  <div class="dialog">
+    <div class="page">
+      <h1>Bypass URL</h1>
+      <div class="content-area">
+        <p>Please add a URL to be exluded from being proxied. Click on "learn more"
+           if you would like to learn about the available formats.</p>
+        <p class="subtitle">Examples: </p>
+        <p class="examples">"foobar.com", "*foobar.com", "*.foobar.com", "*foobar.com:99",
+           "https://x.*.y.com:99", "127.0.1", "[0:0::1]", "[::1]", "http://[::1]:99",
+            "192.168.1.1/16", "fefe:13::abc/33", "&lt;local&gt;"</p>
+        <p class="subtitle">URL: </p>
+        <input type="text" value="" placeholder="URL to exclude" id="bypass-item-add"/>
+      </div>
+      <div class="action-area">
+        <div class="button-area">
+          <button id="dialog-ok">Add</button>
+          <button id="dialog-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

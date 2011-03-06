@@ -1,0 +1,29 @@
+#bypass_list {
+  width: 300px;
+  float: left;
+  margin-right: 10px;
+}
+#bypass-list-add, #bypass-list-remove, #bypass-list-remove-all {
+  display: block;
+  width: 100px;
+  margin-bottom: 5px;
+}
+
+.content-area {
+  width: 500px;
+}
+
+.content-area input {
+  width: 100%;
+}
+
+.subtitle {
+  font-weight: bold;
+  color: #444;
+}
+
+.examples {
+  font-family: courier;
+  margin: 5px;
+  font-size: 0.9em;
+}

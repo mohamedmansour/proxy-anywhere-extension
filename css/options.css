@@ -1,3 +1,5 @@
+/* Extension Options Default Style */
+
 body {
   min-width: 650px;
   font-size: 87%;
@@ -5,7 +7,7 @@ body {
   margin: 10px;
 }
 
-h1 {
+#header h1 {
   background: url("/img/icon48.png") 0px 30px no-repeat;
   display: inline;
   margin: 0;
