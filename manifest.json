@@ -1,6 +1,6 @@
 {
   "name": "Proxy Server Anywhere",
-  "version": "0.1.4",
+  "version": "0.2",
   "update_url": "http://mohamedmansour.com/chrome/proxy_anywhere/updates.xml",
   "homepage_url": "https://github.com/mohamedmansour/proxy-anywhere-extension",
   "minimum_chrome_version": "11",
