@@ -47,5 +47,12 @@ settings = {
   },
   set bypass(val) {
     localStorage['bypass'] = JSON.stringify(val);
-  }
+  },
+  get incognito() {
+    var key = localStorage['incognito'];
+    return (typeof key == 'undefined') ? false : key === 'true';
+  },
+  set incognito(val) {
+    localStorage['incognito'] = val;
+  },
 };

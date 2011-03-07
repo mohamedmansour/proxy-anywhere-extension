@@ -105,7 +105,7 @@ ProxyController.prototype.setProxyEnabled = function (status_)
   // Describes the current proxy setting being used.
   var proxySettings = {
     'value': config,
-    'incognito': false
+    'incognito': settings.incognito
   };
   
   // Change the icon to reflect the current status of the proxy server.
@@ -113,6 +113,11 @@ ProxyController.prototype.setProxyEnabled = function (status_)
     path: this.proxyStatus ? '/img/online.png' : '/img/offline.png'
   };
   
+  // Clear settings for both windows.
+  chrome.experimental.proxy.settings.clear({incognito: true});
+  chrome.experimental.proxy.settings.clear({incognito: false});
+  
+  // Setup new settings for the appropriate window.
   chrome.experimental.proxy.settings.set(proxySettings, function() {});
   chrome.browserAction.setIcon(icon);
 };

@@ -36,6 +36,7 @@ function onSave() {
   bkg.settings.port = parseInt($('port').value);
   bkg.settings.opt_out = $('opt_out').checked;
   bkg.settings.autostart = $('autostart').checked;
+  bkg.settings.incognito = $('incognito').checked;
   
   // Restore bypass list.
   var bypassList = [];
@@ -70,6 +71,7 @@ function onRestore() {
   $('port').value = bkg.settings.port;
   $('scheme').value = bkg.settings.scheme;
   $('autostart').checked = bkg.settings.autostart;
+  $('incognito').checked = bkg.settings.incognito;
   
   // Restore bypass list.
   var bypassList = bkg.settings.bypass;
