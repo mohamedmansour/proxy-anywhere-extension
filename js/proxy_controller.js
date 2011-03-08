@@ -22,7 +22,8 @@ ProxyController = function()
  *
  * @returns {boolean} true is custom proxy is set and active.
  */
-ProxyController.prototype.isProxyActive = function() {
+ProxyController.prototype.isProxyActive = function() 
+{
   return this.proxyStatus;
 };
 
