@@ -4,6 +4,8 @@ var bkg = chrome.extension.getBackgroundPage();
 // When the DOM is loaded, make sure all the saved info is restored.
 window.addEventListener('load', onLoad, false);
 
+var dialog = null;
+
 /**
  * When the options window has been loaded.
  */
@@ -11,12 +13,15 @@ function onLoad() {
   onRestore();
   $('button-save').addEventListener('click', onSave, false);
   $('button-close').addEventListener('click', onClose, false);
-  $('dialog-ok').addEventListener('click', onDialogOk, false);
-  $('dialog-cancel').addEventListener('click', onDialogCancel, false);
   $('bypass-list-add').addEventListener('click', onBypassListAdd, false);
   $('bypass-list-remove').addEventListener('click', onBypassListRemove, false);
   $('bypass-list-remove-all').addEventListener('click', onBypassListRemoveAll, false);
-  $('bypass-item-add').addEventListener('keypress', onBypassListEnter, false);
+  
+  dialog = new DialogController('add-bypass-dialog');
+  dialog.addEventListener('click', onDialogOk);
+  dialog.addEventListener('load', onDialogLoad);
+  dialog.setTemplate({header: 'Bypass URL', ok: 'Add'});
+  dialog.init();
 }
 
 /**
@@ -83,18 +88,18 @@ function onRestore() {
 
 //
 // Proxy specific functionality.
-// TODO(mohamed): Do proper separation between options and dialog.
+// TODO(mohamed): Do proper separation between options and customizations.
 //
 
 /**
- * On Dialog Add Event.
+ * On Add Event.
  */
 function onBypassListAdd() {
-  setDialogVisible(true);
+  dialog.setVisible(true);
 }
 
 /**
- * On Dialog Remove Event.
+ * On Remove Event.
  */
 function onBypassListRemove() {
   var list = $('bypass_list');
@@ -105,7 +110,7 @@ function onBypassListRemove() {
 }
 
 /**
- * On Dialog Remove All Event.
+ * On Remove All Event.
  */
 function onBypassListRemoveAll() {
   var list = $('bypass_list');
@@ -115,55 +120,29 @@ function onBypassListRemoveAll() {
 }
 
 /**
- * On Dialog cancelled Event.
- */
-function onDialogCancel() {
-  setDialogVisible(false);
-}
-
-/**
  * On Dialog Add Event.
  */
-function onDialogOk() {
+function onDialogOk(state) {
+  if (state != DialogController.OK) {
+    return;
+  }
   var item = $('bypass-item-add');
+  if (item.value.trim().length == 0) {
+    return;
+  }
   var list = $('bypass_list');
   var items = item.value.split(',');
   for (var i = 0; i < items.length; i++) {
     list.add(new Option(items[i]));
   }
   list.selectedIndex = list.length - 1;
-  setDialogVisible(false);
+  dialog.setVisible(false);
 }
 
 /**
- * On Dialog Input Enter.
+ * On Dialog Add Event.
  */
-function onBypassListEnter(e) {
-  if (e.keyCode == 13) { // ENTER.
-    onDialogOk();
-  }
-}
-
-/**
- * On Escape Button hit.
- */
-function onEscapePressed(e) {
-  if (e.keyCode  == 27) { // ESCAPE.
-    onDialogCancel();
-  }
-}
-
-/**
- * Sets the visibility of the Dialog to |v| and set necessary components.
- */
-function setDialogVisible(v) {
-  $('button-save').disabled = v;
-  document.querySelector('.dialog').style.display = v ? '-webkit-box' : 'none';
-  if (v) {
-    $('bypass-item-add').value = '';
-    $('bypass-item-add').focus();
-    window.addEventListener('keyup', onEscapePressed, false);
-  } else {
-    window.removeEventListener('keyup', onEscapePressed);
-  }
+function onDialogLoad() {
+  $('bypass-item-add').value = '';
+  $('bypass-item-add').focus();
 }

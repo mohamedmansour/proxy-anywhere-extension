@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css" href="/css/options.css" />
   <link rel="stylesheet" type="text/css" href="/css/options-proxy.css" />
   <script type="text/javascript" src="/js/functions.js"></script>
+  <script type="text/javascript" src="/js/dialog_controller.js"></script>
   <script type="text/javascript" src="/js/options.js"></script>
 </head>
 <body> 
@@ -103,26 +104,15 @@
     </div>
   </div>
   </form>
-  <div class="dialog">
-    <div class="page">
-      <h1>Bypass URL</h1>
-      <div class="content-area">
-        <p>Please add a URL to be exluded from being proxied. Click on "learn more"
-           if you would like to learn about the available formats.</p>
-        <p class="subtitle">Examples: </p>
-        <p class="examples">"foobar.com", "*foobar.com", "*.foobar.com", "*foobar.com:99",
-           "https://x.*.y.com:99", "127.0.1", "[0:0::1]", "[::1]", "http://[::1]:99",
-            "192.168.1.1/16", "fefe:13::abc/33", "&lt;local&gt;"</p>
-        <p class="subtitle">URL: </p>
-        <input type="text" value="" placeholder="URL to exclude" id="bypass-item-add"/>
-      </div>
-      <div class="action-area">
-        <div class="button-area">
-          <button id="dialog-ok">Add</button>
-          <button id="dialog-cancel">Cancel</button>
-        </div>
-      </div>
-    </div>
+  <div id="add-bypass-dialog">
+    <p>Please add a URL to be exluded from being proxied. The available formats 
+       mentioned below. You can add multiple ones separated with a comma.</p>
+    <p class="subtitle">Examples: </p>
+    <p class="examples">"foobar.com", "*foobar.com", "*.foobar.com", "*foobar.com:99",
+       "https://x.*.y.com:99", "127.0.1", "[0:0::1]", "[::1]", "http://[::1]:99",
+        "192.168.1.1/16", "fefe:13::abc/33", "&lt;local&gt;"</p>
+    <p class="subtitle">URL: </p>
+    <input type="text" value="" placeholder="URL to exclude" id="bypass-item-add"/>
   </div>
 </body>
 </html>
