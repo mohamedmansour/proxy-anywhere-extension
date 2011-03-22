@@ -19,3 +19,8 @@ Note, this is still beta development, and might break in future Chrome releases.
  3. Accept, and thats it!
 
 Enjoy! Please submit your pull requests if you have anything interesting!
+
+Screenshots
+-----------------
+![Screenshot of the Chrome Extension](https://github.com/mohamedmansour/proxy-anywhere-extension/raw/master/screenshot/proxy_screenshot.png)
+![Screenshot of the Chrome Extension](https://github.com/mohamedmansour/proxy-anywhere-extension/raw/master/screenshot/proxy_screenshot_bypass.png)
