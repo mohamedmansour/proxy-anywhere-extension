@@ -55,4 +55,11 @@ settings = {
   set incognito(val) {
     localStorage['incognito'] = val;
   },
+  get mode() {
+    var key = localStorage['mode'];
+    return (typeof key == 'undefined') ? 'simple' : key;
+  },
+  set mode(val) {
+    localStorage['mode'] = val;
+  },
 };

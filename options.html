@@ -33,35 +33,58 @@
         <p>The following section encapsulates a single proxy server's
            specification. Make sure the server information is correct.</p>
         <dl>
-          <dt>Protocol:</dt>
+          <dt>Mode:</dt>
           <dd>
-            <select id="scheme">
-              <option value="http">http</option>
-              <option value="socks">socks</option>
-              <option value="socks4">socks4</option>
-              <option value="socks5">socks5</option>
-            </select>
-          </dd>
-          <dt>Host:</dt>
-          <dd>
-            <label for="host"><input type="text" id="host" /></label>
-          </dd>
-          <dt>Port:</dt>
-          <dd>
-            <label for="port"><input type="text" id="port" /></label>
-          </dd>
-          <dt>Autostart:</dt>
-          <dd>
-            <label for="autostart"><input type="checkbox" id="autostart" /></label>
-          </dd>
-          <dt>Incognito only:</dt>
-          <dd>
-            <label for="incognito"><input type="checkbox" id="incognito" /></label>
-            <span class="note" id="incognito_note">
-              Only use this proxy setting for incognito windows.
-            </span>
+             <label for="simplemode"><input type="radio" name="mode" value="simple" id="simplemode"/>Simple</label>
+             <label for="advancedmode"><input type="radio" name="mode" value="advanced" id="advancedmode" />Advanced</label>
           </dd>
         </dl>
+        <div id="simple-pane">
+          <dl>
+            <dt>Protocol:</dt>
+            <dd>
+              <select id="scheme">
+                <option value="http">http</option>
+                <option value="socks">socks</option>
+                <option value="socks4">socks4</option>
+                <option value="socks5">socks5</option>
+              </select>
+            </dd>
+            <dt>Host:</dt>
+            <dd>
+              <label for="host"><input type="text" id="host" /></label>
+            </dd>
+            <dt>Port:</dt>
+            <dd>
+              <label for="port"><input type="text" id="port" /></label>
+            </dd>
+            <dt>Autostart:</dt>
+            <dd>
+              <label for="autostart"><input type="checkbox" id="autostart" /></label>
+            </dd>
+            <dt>Incognito only:</dt>
+            <dd>
+              <label for="incognito"><input type="checkbox" id="incognito" /></label>
+              <span class="note" id="incognito_note">
+                Only use this proxy setting for incognito windows.
+              </span>
+            </dd>
+          </dl>
+        </div>
+        <div id="advanced-pane">
+          <dl>
+            <dt>Proxy list:</dt>
+            <dd>
+              <div class="list-component">
+                <select id="proxy_list" size="8"></select>
+                <button id="proxy-list-add">Add</button>
+                <button id="proxy-list-remove">Remove</button>
+                <button id="proxy-list-remove-all">Remove All</button>
+                <div class="clear"></div>
+              </div>
+            </dd>
+          </dl>
+        </div>
       </div>
     </div>
     <div class="extension-template">
@@ -71,11 +94,13 @@
         <dl>
           <dt>Bypass list:</dt>
           <dd>
-            <select id="bypass_list" size="8"></select>
-            <button id="bypass-list-add">Add</button>
-            <button id="bypass-list-remove">Remove</button>
-            <button id="bypass-list-remove-all">Remove All</button>
-            <div class="clear"></div>
+            <div class="list-component">
+              <select id="bypass_list" size="8"></select>
+              <button id="bypass-list-add">Add</button>
+              <button id="bypass-list-remove">Remove</button>
+              <button id="bypass-list-remove-all">Remove All</button>
+              <div class="clear"></div>
+            </div>
           </dd>
         </dl>
       </div>

@@ -1,9 +1,9 @@
-#bypass_list {
+.list-component select {
   width: 300px;
   float: left;
   margin-right: 10px;
 }
-#bypass-list-add, #bypass-list-remove, #bypass-list-remove-all {
+.list-component button {
   display: block;
   width: 100px;
   margin-bottom: 5px;

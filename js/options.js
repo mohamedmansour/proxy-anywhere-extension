@@ -11,11 +11,14 @@ var dialog = null;
  */
 function onLoad() {
   onRestore();
+  
   $('button-save').addEventListener('click', onSave, false);
   $('button-close').addEventListener('click', onClose, false);
   $('bypass-list-add').addEventListener('click', onBypassListAdd, false);
   $('bypass-list-remove').addEventListener('click', onBypassListRemove, false);
   $('bypass-list-remove-all').addEventListener('click', onBypassListRemoveAll, false);
+  $('simplemode').addEventListener('click', onModeChanged, false);
+  $('advancedmode').addEventListener('click', onModeChanged, false);
   
   dialog = new DialogController('add-bypass-dialog');
   dialog.addEventListener('click', onDialogOk);
@@ -42,6 +45,7 @@ function onSave() {
   bkg.settings.opt_out = $('opt_out').checked;
   bkg.settings.autostart = $('autostart').checked;
   bkg.settings.incognito = $('incognito').checked;
+  bkg.settings.mode = $('simplemode').checked ? 'simple' : 'advanced';
   
   // Restore bypass list.
   var bypassList = [];
@@ -78,6 +82,9 @@ function onRestore() {
   $('autostart').checked = bkg.settings.autostart;
   $('incognito').checked = bkg.settings.incognito;
   
+  // Show the correct pane for each mode.
+  changeMode(bkg.settings.mode == 'simple');
+  
   // Restore bypass list.
   var bypassList = bkg.settings.bypass;
   var list = $('bypass_list');
@@ -90,7 +97,19 @@ function onRestore() {
 // Proxy specific functionality.
 // TODO(mohamed): Do proper separation between options and customizations.
 //
+function onModeChanged(e) {
+  changeMode($('simplemode').checked);
+}
 
+/**
+ * Changes the mode on the current page to the modes UI.
+ */
+function changeMode(simpleMode) {
+  $('simple-pane').style.display = simpleMode ? 'block' : 'none';
+  $('advanced-pane').style.display = simpleMode ? 'none' : 'block';
+  $('simplemode').checked = simpleMode;
+  $('advancedmode').checked = !simpleMode;
+}
 /**
  * On Add Event.
  */
