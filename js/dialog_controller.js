@@ -94,10 +94,7 @@ DialogController.prototype.createDOM = function (dom)
   // Lazy-load.
   var parent = dom.parentNode;
   parent.removeChild(dom);
-  var children = dom.children;
-  for (var c = 0; c < children.length; c++) {
-    contentArea.appendChild(children[c]);
-  }
+  contentArea.innerHTML = dom.innerHTML;
   delete dom;
   parent.appendChild(dialog);
   
