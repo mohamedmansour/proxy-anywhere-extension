@@ -1,11 +1,10 @@
 {
   "name": "Proxy Server Anywhere",
-  "version": "0.3",
-  "update_url": "http://mohamedmansour.com/chrome/proxy_anywhere/updates.xml",
+  "version": "1.0",
   "homepage_url": "https://github.com/mohamedmansour/proxy-anywhere-extension",
-  "minimum_chrome_version": "11",
+  "minimum_chrome_version": "13",
   "description": "Proxy Server Anywhere allows you to instantaneously change to your custom proxy from a click of a button.",
-  "permissions": [ "experimental", "proxy" ],
+  "permissions": [ "proxy" ],
   "background_page": "background.html",
   "options_page": "options.html",
   "browser_action": {

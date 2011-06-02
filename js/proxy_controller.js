@@ -13,7 +13,7 @@ ProxyController = function()
       this.onBrowserActionClicked.bind(this));
 
   // Listen on Proxy Errors.
-  chrome.experimental.proxy.onProxyError.addListener(
+  chrome.proxy.onProxyError.addListener(
       this.onProxyError.bind(this));
 };
 
@@ -106,7 +106,7 @@ ProxyController.prototype.setProxyEnabled = function (status_)
   // Describes the current proxy setting being used.
   var proxySettings = {
     'value': config,
-    'incognito': settings.incognito
+    'scope': settings.incognito ? 'incognito_persistent' : 'regular'
   };
   
   // Change the icon to reflect the current status of the proxy server.
@@ -115,10 +115,10 @@ ProxyController.prototype.setProxyEnabled = function (status_)
   };
   
   // Clear settings for both windows.
-  chrome.experimental.proxy.settings.clear({incognito: true});
-  chrome.experimental.proxy.settings.clear({incognito: false});
+  chrome.proxy.settings.clear({scope : 'incognito_persistent'});
+  chrome.proxy.settings.clear({scope : 'regular'});
   
   // Setup new settings for the appropriate window.
-  chrome.experimental.proxy.settings.set(proxySettings, function() {});
+  chrome.proxy.settings.set(proxySettings, function() {});
   chrome.browserAction.setIcon(icon);
 };
