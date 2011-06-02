@@ -4,6 +4,12 @@ Proxy Anywhere Extension
 This Google Chrome extension allows you to enter a custom proxy server to Chrome.
 With a click of a button, you can switch to your custom proxy, or back to normal.
 
+Download now!
+----------------
+
+You can download it from the Gallery! (https://chrome.google.com/webstore/detail/eejcbegfnjfjnmdikkplhbhnemddchbn)
+
+
 How does it work?
 ----------------
 It uses the Google Chrome Extension API to interact with the Proxy server.
