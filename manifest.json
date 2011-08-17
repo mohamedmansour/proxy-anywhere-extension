@@ -1,6 +1,6 @@
 {
   "name": "Proxy Anywhere",
-  "version": "1.0.2.1",
+  "version": "1.1.0",
   "minimum_chrome_version": "13",
   "description": "Proxy Anywhere allows you to instantaneously change to your custom proxy from a click of a button.",
   "permissions": [ "proxy" ],
