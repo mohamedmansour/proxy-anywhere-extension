@@ -9,13 +9,15 @@ ProxyController = function()
   this.proxyStatus = false;
   
   // Listen on Browser Action clicks.
-  chrome.browserAction.onClicked.addListener(
-      this.onBrowserActionClicked.bind(this));
+  chrome.browserAction.onClicked.addListener(this.onBrowserActionClicked.bind(this));
 
   // Listen on Proxy Errors.
-  chrome.proxy.onProxyError.addListener(
-      this.onProxyError.bind(this));
+  chrome.proxy.onProxyError.addListener(this.onProxyError.bind(this));
 };
+
+ProxyController.ONLINE_ICON = '/img/online.png';
+ProxyController.OFFLINE_ICON = '/img/offline.png';
+ProxyController.ERROR_ICON = '/img/error.png';
 
 /**
  * To knwo the status when the custom proxy server is active or online.
@@ -45,8 +47,8 @@ ProxyController.prototype.onBrowserActionClicked = function(tab)
  */
 ProxyController.prototype.onProxyError = function(details)
 {
-  alert((details.fatal ? 'FATAL' : 'ERROR') + ': ' + details.error + '\n\n' +
-      details.details);
+  chrome.browserAction.setIcon({ path: ProxyController.ERROR_ICON });
+  chrome.browserAction.setTitle({title: details.error});
 };
 
 /**
@@ -110,9 +112,7 @@ ProxyController.prototype.setProxyEnabled = function (status_)
   };
   
   // Change the icon to reflect the current status of the proxy server.
-  var icon = {
-    path: this.proxyStatus ? '/img/online.png' : '/img/offline.png'
-  };
+  var icon = 
   
   // Clear settings for both windows.
   chrome.proxy.settings.clear({scope : 'incognito_persistent'});
@@ -120,5 +120,6 @@ ProxyController.prototype.setProxyEnabled = function (status_)
   
   // Setup new settings for the appropriate window.
   chrome.proxy.settings.set(proxySettings, function() {});
-  chrome.browserAction.setIcon(icon);
+  chrome.browserAction.setIcon({ path: this.proxyStatus ? ProxyController.ONLINE_ICON : ProxyController.OFFLINE_ICON });
+  chrome.browserAction.setTitle({ title: this.proxyStatus ? 'Online' : 'Offline' });
 };
